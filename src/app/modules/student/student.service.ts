@@ -1,15 +1,4 @@
-<<<<<<< HEAD
-import { StudentModel } from '../student.model';
-import { Student } from './student.interface';
 
-const createStudentIntoDB = async (student: Student) => {
-  const result = await StudentModel.create(student);
-  return result;
-};
-
-const getAllStudentsFromDB = async () => {
-  const result = await StudentModel.find();
-=======
 import httpStatus from 'http-status';
 import mongoose from 'mongoose';
 import QueryBuilder from '../../builder/QueryBuilder';
@@ -138,21 +127,12 @@ const getAllStudentsFromDB = async (query: Record<string, unknown>) => {
     .fields();
 
   const result = await studentQuery.modelQuery;
->>>>>>> resart-part
+
   return result;
 };
 
 const getSingleStudentFromDB = async (id: string) => {
-<<<<<<< HEAD
-  const result = await StudentModel.findOne({ id });
-  return result;
-};
 
-export const StudentServices = {
-  createStudentIntoDB,
-  getAllStudentsFromDB,
-  getSingleStudentFromDB,
-=======
   const result = await Student.findById(id)
     .populate('admissionSemester')
     .populate({
@@ -254,5 +234,5 @@ export const StudentServices = {
   getSingleStudentFromDB,
   updateStudentIntoDB,
   deleteStudentFromDB,
->>>>>>> resart-part
+
 };
