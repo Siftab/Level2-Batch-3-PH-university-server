@@ -37,8 +37,8 @@ const getSingleCourseFromDb =catchAsync(async(req,res)=>{
 
 
 const deleteCourseFromDb = catchAsync(async(req,res)=>{
-    const {id} = req.query
-    const result = await CourseServices.deleteSingleCourseFromDb(id as string)
+    const {id} = req.params
+    const result = await CourseServices.deleteSingleCourseFromDb(id  )
 
 
     sendResponse(res,{

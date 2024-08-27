@@ -14,7 +14,7 @@ router.get("/:id",CourseControllers.getSingleCourseFromDb)
 router.post("/create-course",
     validateRequest(courseValidation.createCourseValidation),
     CourseControllers.createACourse)
-router.delete("/delete-course",CourseControllers.deleteCourseFromDb)
+router.delete("/delete-course/:id",CourseControllers.deleteCourseFromDb)
 
 
 

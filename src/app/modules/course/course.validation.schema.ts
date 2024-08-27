@@ -16,6 +16,7 @@ const createCourseValidation = z.object({
         code:z.number(),
         credits:z.number(),
         PreRequisiteCourse:z.array(PreRequisiteCourseValidation ).optional()
+        ,isDeleted:z.boolean().optional()
     })
 })
 

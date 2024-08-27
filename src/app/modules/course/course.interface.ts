@@ -11,6 +11,7 @@ export type Tcourse  ={
     prefix :string,
     code :number,
     credits : number,
-    PreRequisiteCourse:[TPreRequisiteCourses ]
+    PreRequisiteCourse:[TPreRequisiteCourses ],
+    isDeleted ?: boolean
 }
  

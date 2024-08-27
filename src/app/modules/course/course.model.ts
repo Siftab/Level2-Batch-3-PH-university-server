@@ -40,6 +40,13 @@ const courseSchema = new Schema<Tcourse>({
   },
   PreRequisiteCourse:
     [PreRequisiteCourseSchema]
+
+    ,
+    isDeleted:{
+        type:Boolean,
+        default:false
+
+    }
   
 });
 

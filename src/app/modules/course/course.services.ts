@@ -31,7 +31,7 @@ const getAllCourseFromDb = async(query:Record<string,unknown>)=>{
 }
 const getSingleCourseFromDb = async(id:string )=>{
 
-    const result = await Course.findById(id)
+    const result = await Course.findById(id).populate("PreRequisiteCourse.course")
 
     return result
 }
@@ -41,7 +41,8 @@ const deleteSingleCourseFromDb = async(id:string )=>{
         ,{isDeleted: true},{
             new:true
         }
-    )
+    ).
+    populate("PreRequisiteCourse.course")
 
     return result
 }
