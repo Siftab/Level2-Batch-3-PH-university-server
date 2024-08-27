@@ -1,5 +1,8 @@
+import { query } from "express"
+import QueryBuilder from "../../builder/QueryBuilder"
 import { Tcourse } from "./course.interface"
 import { Course } from "./course.model"
+import { courseSearchableFields } from "./course.constants"
 
 
 
@@ -10,9 +13,19 @@ const createCourse = async(payload:Tcourse)=>{
 
     return result
 }
-const getAllCourseFromDb = async()=>{
+const getAllCourseFromDb = async(query:Record<string,unknown>)=>{
 
-    const result = await Course.find()
+
+    const coursequery = new QueryBuilder(Course.find().populate("PreRequisiteCourse.course")
+    ,query )
+    .search(courseSearchableFields)
+    .filter()
+    .sort()
+    .paginate()
+    .fields()
+
+
+    const result = await coursequery.modelQuery 
 
     return result
 }

@@ -3,7 +3,7 @@ import { z } from "zod";
 
 
 
-const preReuisiteCourseValidation  = z.object({
+const PreRequisiteCourseValidation  = z.object({
     course:z.string(),
     isDeleted:z.boolean()
 })
@@ -15,11 +15,11 @@ const createCourseValidation = z.object({
         prefix:z.string(),
         course:z.number(),
         credit:z.number(),
-        preReuisiteCourses:z.array(preReuisiteCourseValidation )
+        PreRequisiteCourses:z.array(PreRequisiteCourseValidation )
     })
 })
 
 
 export const courseValidation = {
-    createCourseValidation,preReuisiteCourseValidation
+    createCourseValidation,PreRequisiteCourseValidation
 }

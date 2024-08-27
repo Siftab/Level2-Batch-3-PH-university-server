@@ -5,7 +5,7 @@ import { AcademicSemesterRoutes } from '../modules/academicSemester/academicSeme
 import { StudentRoutes } from '../modules/student/student.route';
 import { UserRoutes } from '../modules/user/user.route';
 import path from 'path';
-import { courseRouter } from '../modules/course/course.router';
+import { courseRouter } from '../modules/course/course.route';
 
 const router = Router();
 

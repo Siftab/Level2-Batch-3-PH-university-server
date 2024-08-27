@@ -11,5 +11,6 @@ export type Tcourse  ={
     prefix :string,
     code :number,
     credits : number,
-    preReuisiteCourses:[TPreRequisiteCourses ]
+    PreRequisiteCourse:[TPreRequisiteCourses ]
 }
+ 

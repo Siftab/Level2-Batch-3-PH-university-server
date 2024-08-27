@@ -3,7 +3,7 @@ import { Tcourse, TPreRequisiteCourses } from './course.interface';
 
 
 
-const preReuisiteCoursesSchema =new Schema<TPreRequisiteCourses>({
+const PreRequisiteCourseSchema =new Schema<TPreRequisiteCourses>({
     course:{
         type: Schema.Types.ObjectId
 
@@ -37,12 +37,14 @@ const courseSchema = new Schema<Tcourse>({
     trim: true,
     required: true
   },
-  preReuisiteCourses:[preReuisiteCoursesSchema]
+  PreRequisiteCourse:
+    [PreRequisiteCourseSchema]
+  
 });
 
 
 
 export const Course =  model<Tcourse>('Course',courseSchema)
-export const PreRequisiteCourses = model<TPreRequisiteCourses>("PreRequisiteCourses",preReuisiteCoursesSchema)
+export const PreRequisiteCourses = model<TPreRequisiteCourses>("PreRequisiteCourses",PreRequisiteCourseSchema)
 
 
