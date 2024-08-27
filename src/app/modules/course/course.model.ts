@@ -5,7 +5,8 @@ import { Tcourse, TPreRequisiteCourses } from './course.interface';
 
 const PreRequisiteCourseSchema =new Schema<TPreRequisiteCourses>({
     course:{
-        type: Schema.Types.ObjectId
+        type: Schema.Types.ObjectId,
+        ref:"Course"
 
     },
     isDeleted:{
