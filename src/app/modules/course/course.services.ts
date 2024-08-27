@@ -3,9 +3,9 @@ import { Course } from "./course.model"
 
 
 
-const createCourse = async()=>{
+const createCourse = async(payload:Record<string,unknown>)=>{
 
-    const result = await Course.create()
+    const result = await Course.create(payload)
 
     return result
 }
@@ -42,4 +42,4 @@ export const CourseServices ={
     getSingleCourseFromDb,
     deleteSingleCourseFromDb
 
-}
+}   
