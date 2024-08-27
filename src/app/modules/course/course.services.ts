@@ -1,4 +1,4 @@
-import { query } from "express"
+
 import QueryBuilder from "../../builder/QueryBuilder"
 import { Tcourse } from "./course.interface"
 import { Course } from "./course.model"
