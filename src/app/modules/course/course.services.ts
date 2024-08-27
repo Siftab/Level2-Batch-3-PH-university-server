@@ -1,9 +1,10 @@
+import { Tcourse } from "./course.interface"
 import { Course } from "./course.model"
 
 
 
 
-const createCourse = async(payload:Record<string,unknown>)=>{
+const createCourse = async(payload:Tcourse)=>{
 
     const result = await Course.create(payload)
 
