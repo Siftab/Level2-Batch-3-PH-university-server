@@ -47,6 +47,48 @@ const deleteSingleCourseFromDb = async(id:string )=>{
     return result
 }
 
+const updateCourseIntoDb = async(id:string,payload : Partial<Tcourse>)=>{
+    
+
+    const {PreRequisiteCourse, ...rest} =payload
+
+    const updateBasicCourseInfo = await Course.findByIdAndUpdate(id,
+        rest,
+        {
+            new:true
+        }
+    )
+
+
+    if(PreRequisiteCourse && PreRequisiteCourse.length >0){
+                // filter out the new course field 
+            const newPreRequisiteCourse = PreRequisiteCourse?.filter(el=> el.course && !el.isDeleted)
+            // filtering out the delted course filed 
+        const deletedCourse = PreRequisiteCourse.filter(el => el.course && el.isDeleted).map(el =>el.course)
+        console.log(deletedCourse)
+       const deletedPreRequisites= await Course.findByIdAndUpdate(id,
+            {
+                $pull: {PreRequisiteCourse :{course: {$in: deletedCourse}}}
+            }
+         )
+
+         const updateNewPreRequisiteCourse= await Course.findByIdAndUpdate(id,
+            {
+                $addToSet:{PreRequisiteCourse: {$each : newPreRequisiteCourse}}
+            }
+         )
+
+
+         const result = await Course.findById(id).populate("PreRequisiteCourse.course")
+
+         return result
+    }
+
+
+
+    return updateBasicCourseInfo
+
+}
 
 
 
@@ -55,6 +97,7 @@ export const CourseServices ={
     createCourse,
     getAllCourseFromDb,
     getSingleCourseFromDb,
-    deleteSingleCourseFromDb
+    deleteSingleCourseFromDb,
+    updateCourseIntoDb
 
 }   

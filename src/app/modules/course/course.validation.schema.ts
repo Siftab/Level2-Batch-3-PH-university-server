@@ -21,6 +21,10 @@ const createCourseValidation = z.object({
 })
 
 
+const updatePreRequisiteCourseValidation =  PreRequisiteCourseValidation.partial()
+
+
 export const courseValidation = {
-    createCourseValidation,PreRequisiteCourseValidation
+    createCourseValidation,PreRequisiteCourseValidation,
+    updatePreRequisiteCourseValidation
 }
